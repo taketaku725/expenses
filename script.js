@@ -91,6 +91,7 @@ function toggleTransport(index, value){
 function toggleSettlement(name, checked) {
   settlementChecks[name] = checked;
   save();
+  calculate();
 }
 
 // ===== メンバー描画 =====
