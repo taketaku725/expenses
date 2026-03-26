@@ -103,3 +103,9 @@ button {
   background: #aaa;
   margin-top: 8px;
 }
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
