@@ -110,6 +110,15 @@ button {
 
 .result-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+}
+
+/* 左側（名前＋金額） */
+.result-row > div {
+  flex: 1;
+}
+
+/* チェックボックスを右端固定 */
+.result-row input[type="checkbox"] {
+  margin-left: auto;
 }
