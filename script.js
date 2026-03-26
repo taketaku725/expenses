@@ -258,7 +258,12 @@ function calculate(){
     const div = document.createElement("div");
     div.className = "result-item";
 
-    const checked = settlementChecks[name] ? "checked" : "";
+    // チェック状態
+    const isChecked = settlementChecks[name];
+
+    if (isChecked) {
+      div.classList.add("done");
+    }
 
     div.innerHTML = `
       <div class="result-row">
@@ -269,7 +274,7 @@ function calculate(){
           </span>
         </div>
         <input type="checkbox"
-          ${checked}
+          ${isChecked ? "checked" : ""}
           onchange="toggleSettlement('${name}', this.checked)">
       </div>
     `;
