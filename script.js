@@ -3,6 +3,7 @@ const categories = ["交通費","食費","雑貨","宿泊費","その他"];
 
 let members = JSON.parse(localStorage.getItem("members")) || [];
 let payments = JSON.parse(localStorage.getItem("payments")) || [];
+let settlementChecks = JSON.parse(localStorage.getItem("settlementChecks")) || {};
 
 let editIndex = null;
 
@@ -12,6 +13,7 @@ let editIndex = null;
 function save() {
   localStorage.setItem("members", JSON.stringify(members));
   localStorage.setItem("payments", JSON.stringify(payments));
+  localStorage.setItem("settlementChecks", JSON.stringify(settlementChecks));
 }
 
 // ===== データ補正 =====
@@ -78,11 +80,17 @@ function deleteMember(i) {
   calculate();
 }
 
-// ===== カテゴリ参加切替 =====
+// ===== 交通費参加切替 =====
 function toggleTransport(index, value){
   members[index].transport = value;
   save();
   calculate();
+}
+
+// ===== 清算済み切替 =====
+function toggleSettlement(name, checked) {
+  settlementChecks[name] = checked;
+  save();
 }
 
 // ===== メンバー描画 =====
@@ -250,11 +258,20 @@ function calculate(){
     const div = document.createElement("div");
     div.className = "result-item";
 
+    const checked = settlementChecks[name] ? "checked" : "";
+
     div.innerHTML = `
-      ${name}：
-      <span style="color:${val>=0?'#2e7d32':'#c62828'}">
-        ${val>=0?'+':''}${Math.round(val)}円
-      </span>
+      <div class="result-row">
+        <div>
+          ${name}：
+          <span style="color:${val>=0?'#2e7d32':'#c62828'}">
+            ${val>=0?'+':''}${Math.round(val)}円
+          </span>
+        </div>
+        <input type="checkbox"
+          ${checked}
+          onchange="toggleSettlement('${name}', this.checked)">
+      </div>
     `;
 
     result.appendChild(div);
