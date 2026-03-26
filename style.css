@@ -130,3 +130,8 @@ button {
   width: 20px;
   height: 20px;
 }
+
+.result-item.done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
