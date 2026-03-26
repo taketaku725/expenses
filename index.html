@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旅行経費精算</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>経費精算</h1>
+
+  <!-- メンバー -->
+  <section>
+    <h2>メンバー</h2>
+    <div class="row">
+      <input type="text" id="memberName" placeholder="名前">
+      <button onclick="addMember()">追加</button>
+    </div>
+    <ul id="memberList"></ul>
+  </section>
+
+  <!-- 支払い -->
+  <section>
+    <h2>支払い登録</h2>
+
+    <select id="category">
+      <option>交通費</option>
+      <option>食費</option>
+      <option>雑貨</option>
+      <option>宿泊費</option>
+      <option>その他</option>
+    </select>
+
+    <input type="text" id="title" placeholder="内容">
+    <input type="number" id="amount" placeholder="金額">
+
+    <label>支払者</label>
+    <select id="payer"></select>
+
+    <button onclick="addPayment()">登録</button>
+  </section>
+
+  <section>
+    <h2>合計支出</h2>
+    <div id="total"></div>
+  </section>
+
+  <section>
+    <h2>経費一覧</h2>
+    <div id="history"></div>
+  </section>
+
+  <section>
+    <h2>精算結果</h2>
+    <div id="result"></div>
+  </section>
+
+</div>
+
+<!-- 編集モーダル -->
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <h3>編集</h3>
+
+    <select id="editCategory"></select>
+    <input type="text" id="editTitle">
+    <input type="number" id="editAmount">
+    <select id="editPayer"></select>
+
+    <button onclick="saveEdit()">保存</button>
+    <button class="cancel" onclick="closeModal()">キャンセル</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
