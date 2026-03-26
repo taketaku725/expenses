@@ -29,6 +29,12 @@ input, select, button {
   border: 1px solid #ccc;
 }
 
+/* チェックボックスだけ例外にする */
+input[type="checkbox"] {
+  width: auto;
+  margin-top: 0;
+}
+
 button {
   background: #4CAF50;
   color: white;
@@ -121,4 +127,6 @@ button {
 /* チェックボックスを右端固定 */
 .result-row input[type="checkbox"] {
   margin-left: auto;
+  width: 20px;
+  height: 20px;
 }
